@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "e10d3550-0ced-4ff1-b621-5130c82c2d49",
+		"name": "Prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28978284"
+	},
+	"item": [
+		{
+			"name": "microservicio cliente",
+			"item": [
+				{
+					"name": "crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jose Lema\",\n    \"genero\": \"M\",\n    \"edad\": 25,\n    \"identificacion\": \"0999999999\",\n    \"direccion\": \"Otavalo sn y principal\",\n    \"clienteId\": \"123\",\n    \"telefono\": \"098254785\",\n    \"contraseña\": \"1234\",\n    \"estado\": \"True\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8091/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8091/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "microservicio cuenta",
+			"item": [
+				{
+					"name": "crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroCuenta\": \"1234567896\",\n    \"clienteId\": 1,\n    \"tipoCuenta\": \"Corriente\",\n    \"saldoInicial\": 1000.00,\n    \"estado\": \"True\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/cuentas",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener cuenta por numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8092/cuentas/numero/1234567890",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"cuentas",
+								"numero",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener cuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8092/cuentas",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar movimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroCuenta\": \"1234567896\",\n    \"valor\": -2500.00,\n    \"tipoMovimiento\": \"retiro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/movimientos",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"movimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener movimientos x cuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/movimientos/cuenta/1234567895",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"movimientos",
+								"cuenta",
+								"1234567895"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reporte estado de cuentas x clientid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/reportes?clienteId=1&fechaInicio=2025-03-10&fechaFin=2025-03-17",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "clienteId",
+									"value": "1"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2025-03-10"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-03-17"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
